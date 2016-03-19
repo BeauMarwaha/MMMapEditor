@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+//Author(s): Cody Freeman, Jared Miller, Beau Marwaha
+//Purpose: External map editor that can be used with the game Mascot Mayhem
 namespace ExternalTool
 {
     class Program
