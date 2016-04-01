@@ -68,23 +68,23 @@ namespace ExternalTool
             {
                 if(map1[i].Contains("f") == true)
                 {
-                    map1[i].Select(f => map1[i].Replace("f", "field")).ToArray(); 
+                    map1[i].Select(f => map1[i].Replace("f", "field,")).ToArray(); 
                 }
                 else if(map1[i].Contains("r") == true)
                 {
-                    map1[i].Select(r => map1[i].Replace("r", "river")).ToArray();
+                    map1[i].Select(r => map1[i].Replace("r", "river,")).ToArray();
                 }
                 else if(map1[i].Contains("p") == true)
                 {
-                    map1[i].Select(p => map1[i].Replace("p", "pavement")).ToArray();
+                    map1[i].Select(p => map1[i].Replace("p", "pavement,")).ToArray();
                 }
                 else if(map1[i].Contains("fo") == true)
                 {
-                    map1[i].Select(fo => map1[i].Replace("fo", "forest")).ToArray();
+                    map1[i].Select(fo => map1[i].Replace("fo", "forest,")).ToArray();
                 }
                 else if(map1[i].Contains("w") == true)
                 {
-                    map1[i].Select(w => map1[i].Replace("w", "win tile")).ToArray();
+                    map1[i].Select(w => map1[i].Replace("w", "win tile,")).ToArray();
                 }
                 else
                 {
