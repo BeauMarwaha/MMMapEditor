@@ -59,6 +59,39 @@ namespace ExternalTool
                 Console.WriteLine(ex.StackTrace); 
             }
 
+            // test - replace file characters with full words
+            // ex: "f" becomes "field"
+            // idea is to speed up map creation and allow faster creations of larger or more complex maps 
+
+            // while loop to read through array 
+            for(int i = 0; i < map1.Length; i++)
+            {
+                if(map1[i].Contains("f") == true)
+                {
+                    map1[i].Select(f => map1[i].Replace("f", "field")).ToArray(); 
+                }
+                else if(map1[i].Contains("r") == true)
+                {
+                    map1[i].Select(r => map1[i].Replace("r", "river")).ToArray();
+                }
+                else if(map1[i].Contains("p") == true)
+                {
+                    map1[i].Select(p => map1[i].Replace("p", "pavement")).ToArray();
+                }
+                else if(map1[i].Contains("fo") == true)
+                {
+                    map1[i].Select(fo => map1[i].Replace("fo", "forest")).ToArray();
+                }
+                else if(map1[i].Contains("w") == true)
+                {
+                    map1[i].Select(w => map1[i].Replace("w", "win tile")).ToArray();
+                }
+                else
+                {
+                    Console.WriteLine("Error: Unknown tile value. Please change to known tile value");
+                    Console.WriteLine("Tile types: Field(f), River(r), Pavement(p), Forest(Fo), Win Tile(w)");
+                }
+            }
             Console.WriteLine("The file has been saved, it can be located in the bin/debug folder");
         }
     }
