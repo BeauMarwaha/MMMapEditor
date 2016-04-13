@@ -14,7 +14,7 @@ namespace ExternalTool
         static void Main(string[] args)
         {
             // array to hold the characters for map creation
-            string[] map1 = new string[10]; // char[9] = 10 characters for the 10 x 10 map 
+            string[,] map1 = new string[10,10]; // char[9] = 10 characters for the 10 x 10 map 
 
             //directions
             Console.WriteLine("Mascot Mayhem Map Editor");
@@ -30,8 +30,11 @@ namespace ExternalTool
             // loop to fill in the array
             for (int i = 0; i < 10; i++)
             {
-                Console.WriteLine("Type in the map for row " + i); // ex: g, g, g, g, g, g, g, g, g, g
-                map1[i] = Console.ReadLine(); // fills in the typed-in code to the array
+                for (int j = 0; j < 10; j++)
+                {
+                    Console.WriteLine("Type in the map for row " + i + " column " + j); // ex: g, g, g, g, g, g, g, g, g, g
+                    map1[i,j] = Console.ReadLine(); // fills in the typed-in code to the array 
+                }
             }
 
             // set up streamwriter
@@ -47,7 +50,10 @@ namespace ExternalTool
                 // output array data into the text file 
                 for (int i = 0; i < 10; i++)
                 {
-                    output.WriteLine(map1[i]);
+                    for (int j = 0; j < 10; j++)
+                    {
+                        output.WriteLine(map1[i,j]);
+                    }
                 }
                 
                 // close the streamwriter
@@ -64,32 +70,36 @@ namespace ExternalTool
             // idea is to speed up map creation and allow faster creations of larger or more complex maps 
 
             // while loop to read through array 
-            for(int i = 0; i < map1.Length; i++)
+            for(int i = 0; i < 10; i++)
             {
-                if(map1[i].Contains("f") == true)
+               for(int j = 0; j < 10; j++)
                 {
-                    map1[i].Select(f => map1[i].Replace("f", "field,")).ToArray(); 
-                }
-                else if(map1[i].Contains("r") == true)
-                {
-                    map1[i].Select(r => map1[i].Replace("r", "river,")).ToArray();
-                }
-                else if(map1[i].Contains("p") == true)
-                {
-                    map1[i].Select(p => map1[i].Replace("p", "pavement,")).ToArray();
-                }
-                else if(map1[i].Contains("fo") == true)
-                {
-                    map1[i].Select(fo => map1[i].Replace("fo", "forest,")).ToArray();
-                }
-                else if(map1[i].Contains("w") == true)
-                {
-                    map1[i].Select(w => map1[i].Replace("w", "win tile,")).ToArray();
-                }
-                else
-                {
-                    Console.WriteLine("Error: Unknown tile value. Please change to known tile value");
-                    Console.WriteLine("Tile types: Field(f), River(r), Pavement(p), Forest(Fo), Win Tile(w)");
+                    if(map1[i,j] == "f")
+                    {
+                        map1[i, j] = "field"; 
+                    }
+                    else if(map1[i,j] == "r")
+                    {
+                        map1[i, j] = "river"; 
+                    }
+                    else if(map1[i,j] == "p")
+                    {
+                        map1[i, j] = "pavement"; 
+                    }
+                    else if(map1[i,j] == "fo")
+                    {
+                        map1[i, j] = "forest"; 
+                    }
+                    else if(map1[i,j] == "w")
+                    {
+                        map1[i, j] = "win tile"; 
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid tile type found at " + i + " " + j);
+                        Console.WriteLine("Please edit and try again");
+                        return; 
+                    }
                 }
             }
             Console.WriteLine("The file has been saved, it can be located in the bin/debug folder");
