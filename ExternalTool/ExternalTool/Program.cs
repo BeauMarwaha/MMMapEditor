@@ -19,12 +19,16 @@ namespace ExternalTool
             //directions
             Console.WriteLine("Mascot Mayhem Map Editor");
             Console.WriteLine("Directions:");
-            Console.WriteLine("Fill in each line with 10 tile type names using a comma to seperate each one");
-            Console.WriteLine("Upon entering the tenth word in the line press enter to start the next line");
-            Console.WriteLine("Each map is a 10 by 10 grid so fill each of the 10 lines with 10 tile types");
-            Console.WriteLine("The tile types are: Field, River, Pavement, Forest, Win Tile");
-            Console.WriteLine("Example input line: ");
-            Console.WriteLine("Field,Field,Field,Field,Field,Field,Forest,Forest,River,Field");
+            Console.WriteLine("Fill in each prompt with a tile id to assign that tile a type");
+            Console.WriteLine("Each map is a 10 by 10 grid");
+            Console.WriteLine("The tile ids and corresponding types are:");
+            Console.WriteLine("f for Field");
+            Console.WriteLine("r for River");
+            Console.WriteLine("p for Pavement");
+            Console.WriteLine("fo for Forest");
+            Console.WriteLine("w for Win Tile");
+            Console.WriteLine("Example input: ");
+            Console.WriteLine("r");
             Console.WriteLine("");//spacing
 
             // loop to fill in the array
@@ -54,6 +58,11 @@ namespace ExternalTool
                     else if (map1[i, j] == "w")
                     {
                         map1[i, j] = "win tile";
+                    }
+                    else //unrecognized input
+                    {
+                        Console.WriteLine("Unrecognized tile id, defaulting to the field type");
+                        map1[i, j] = "field";
                     }
                 }
             }
